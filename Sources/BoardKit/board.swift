@@ -68,14 +68,14 @@ open class Tile: SKSpriteNode {
 
 open class Board<T: Tile>: SKNode {
     
-    var dimensions: (x: Int, y: Int)
-    var array: [[T]] = []
+    public var dimensions: (x: Int, y: Int)
+    public var array: [[T]] = []
     
-    func tile(x: Int, y: Int) -> T {
+    public func tile(x: Int, y: Int) -> T {
         return array[x-1][y-1]
     }
     
-    func neighbors(x: Int, y: Int) -> [T] {
+    public func neighbors(x: Int, y: Int) -> [T] {
         var n: [T] = []
         for dx in [-1,0,1] {
             for dy in [-1,0,1] {
@@ -90,7 +90,7 @@ open class Board<T: Tile>: SKNode {
         return n
     }
     
-    init(x: Int, y: Int, padding: CGFloat = 0) {
+    public init(x: Int, y: Int, padding: CGFloat = 0) {
         self.dimensions = (x, y)
         super.init()
         
@@ -108,7 +108,7 @@ open class Board<T: Tile>: SKNode {
         }
     }
     
-    func loop(_ run: (T) -> ()) {
+    public func loop(_ run: (T) -> ()) {
         for x in 1...dimensions.x {
             for y in 1...dimensions.y {
                 run(tile(x: x, y: y))
