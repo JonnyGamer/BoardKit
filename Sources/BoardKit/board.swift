@@ -62,8 +62,8 @@ public extension SKNode {
 
 
 open class Tile: SKSpriteNode {
-    var x = 0
-    var y = 0
+    public var x = 0
+    public var y = 0
 }
 
 open class Board<T: Tile>: SKNode {
@@ -123,7 +123,7 @@ open class Board<T: Tile>: SKNode {
 }
 
 #if os(macOS)
-public extension SKScene {
+extension SKScene {
     open override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
         let nodos = nodes(at: location)
@@ -151,6 +151,6 @@ public extension SKScene {
 #endif
 
 
-public extension SKScene {
-    @objc func tapped(tile: Tile) {}
+extension SKScene {
+    @objc open func tapped(tile: Tile) {}
 }
